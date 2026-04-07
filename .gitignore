@@ -1,0 +1,10 @@
+/.db/data/
+
+.DS_Store
+.mcp.json
+.playwright-mcp/
+.serena
+mailpit/
+.claude/
+tmp/
+temp/

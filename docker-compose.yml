@@ -1,0 +1,31 @@
+services:
+  faqapp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/workspace
+    ports:
+      - "5134:8080"
+      # - "8888:8888"
+    environment:
+      - ASPNETCORE_URLS=http://0.0.0.0:8080
+    working_dir: /workspace/src
+    tty: true
+
+  faqapp_db:
+    container_name: faqapp-db
+    image: postgres:18
+    restart: always
+    ports: 
+      - "54326:5432"
+    volumes:
+      - ./postgres/init:/docker-entrypoint-initdb.d
+      - postgres_data:/var/lib/postgresql
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: app
+
+volumes:
+  postgres_data:
