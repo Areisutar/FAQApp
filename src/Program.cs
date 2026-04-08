@@ -44,6 +44,14 @@ if (builder.Environment.IsDevelopment())
         configuration.RootPath = "../vue/dist";
     });
 }
+else
+{
+    builder.Services.AddSpaStaticFiles(configuration =>
+    {
+        configuration.RootPath = "wwwroot";
+    });
+}
+
 builder.Services.AddScoped<ITestService,TestService>();
 
 var app = builder.Build();
@@ -68,6 +76,10 @@ else
 
 app.UseStaticFiles();
 app.UseSpaStaticFiles();
+if (!app.Environment.IsDevelopment())
+{
+    app.UseSpaStaticFiles();
+}
 
 app.UseRouting();
 

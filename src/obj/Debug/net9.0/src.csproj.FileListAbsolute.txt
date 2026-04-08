@@ -206,3 +206,4 @@
 /Users/teraotakuya/src/FAQApp/src/obj/Debug/net9.0/src.dll
 /Users/teraotakuya/src/FAQApp/src/obj/Debug/net9.0/refint/src.dll
 /Users/teraotakuya/src/FAQApp/src/obj/Debug/net9.0/src.pdb
+/workspace/src/obj/Debug/net9.0/src.sourcelink.json
