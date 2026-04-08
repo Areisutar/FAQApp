@@ -1,0 +1,10 @@
+{
+"SpaProxyServer": {
+"ServerUrl": "",
+"RedirectUrl": "",
+"LaunchCommand": "",
+"WorkingDirectory": "/workspace/src",
+"MaxTimeoutInSeconds": "120",
+"KeepRunning": "false"
+}
+}

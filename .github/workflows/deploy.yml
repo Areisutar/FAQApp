@@ -1,0 +1,74 @@
+name: Deploy to Cloud Run
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      id-token: write
+
+    env:
+      PROJECT_ID: project-4cec8efc-8777-415d-9cc
+      REGION: asia-northeast1
+      REPO: faqapp
+      IMAGE_NAME: faq-app
+      APP_NAME: faq-app
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "9.0.x"
+
+      # 🔐 認証（Workload Identity）
+      - name: Authenticate
+        uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: ${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_SERVICE_ACCOUNT }}
+
+      - name: Setup gcloud
+        uses: google-github-actions/setup-gcloud@v2
+
+      - name: Install dotnet-ef
+        run: dotnet tool install --global dotnet-ef
+
+      - name: Run EF Core migrations
+        env:
+          PATH: /home/runner/.dotnet/tools:${{ env.PATH }}
+          ConnectionStrings__DefaultConnection: ${{ secrets.PROD_DB_CONNECTION }}
+        run: dotnet ef database update --project src/src.csproj --startup-project src/src.csproj
+
+      # 🧠 DIGEST生成（コミットハッシュ）
+      - name: Set digest
+        id: vars
+        run: echo "DIGEST=${GITHUB_SHA::7}" >> $GITHUB_OUTPUT
+
+      # 🐳 Docker認証
+      - name: Configure Docker
+        run: gcloud auth configure-docker $REGION-docker.pkg.dev
+
+      # 🏗 build & push
+      - name: Build & Push
+        run: |
+          IMAGE=${REGION}-docker.pkg.dev/${PROJECT_ID}/${REPO}/${IMAGE_NAME}:${{ steps.vars.outputs.DIGEST }}
+          docker build -f Dockerfile.Prod -t $IMAGE .
+          docker push $IMAGE
+
+      # 🚀 Cloud Run deploy
+      - name: Deploy
+        run: |
+          IMAGE=${REGION}-docker.pkg.dev/${PROJECT_ID}/${REPO}/${IMAGE_NAME}:${{ steps.vars.outputs.DIGEST }}
+          gcloud run deploy ${APP_NAME} \
+            --image $IMAGE \
+            --region $REGION \
+            --platform managed \
+            --allow-unauthenticated
