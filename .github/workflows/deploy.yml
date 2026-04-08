@@ -41,9 +41,14 @@ jobs:
       - name: Install dotnet-ef
         run: dotnet tool install --global dotnet-ef
 
+      - name: Add dotnet tools to PATH
+        run: echo "/home/runner/.dotnet/tools" >> $GITHUB_PATH
+
+      - name: Restore .NET dependencies
+        run: dotnet restore src/src.csproj
+
       - name: Run EF Core migrations
         env:
-          PATH: /home/runner/.dotnet/tools:${{ env.PATH }}
           ConnectionStrings__DefaultConnection: ${{ secrets.PROD_DB_CONNECTION }}
         run: dotnet ef database update --project src/src.csproj --startup-project src/src.csproj
 
