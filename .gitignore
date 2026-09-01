@@ -8,3 +8,11 @@ mailpit/
 .claude/
 tmp/
 temp/
+
+# Build outputs
+*.dll
+*.pdb
+
+# Cache
+*.cache
+.cache/

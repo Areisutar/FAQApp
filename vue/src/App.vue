@@ -15,13 +15,14 @@ import { type testModel } from './interfaces/IHttpClient'
 
 const sendData = async () => {
   const client = new HttpClient()
-  const data: testModel = { text: "Vueから送信テスト！" }
+  const data: testModel = { text: "送信します！" }
   
   try {
-    await client.testApi(data)
+    var response = await client.testApi(data);
+    console.log(response);
     alert("送信成功！C#のコンソールを見てね")
   } catch (error) {
-    console.error("失敗:", error)
+    console.dir("失敗:", error);
   }
 }
 </script>
