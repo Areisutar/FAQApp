@@ -53,6 +53,7 @@ else
 }
 
 builder.Services.AddScoped<ITestService,TestService>();
+builder.Services.AddScoped<IFormService,FormService>();
 
 var app = builder.Build();
 

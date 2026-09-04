@@ -1,7 +1,7 @@
 // vue/src/services/HttpClient.ts
 import axios from "axios";
 import type { AxiosInstance } from "axios";
-import { type IHttpClient, type testModel } from "../interfaces/IHttpClient";
+import { type IHttpClient, type testModel, type formModel } from "../interfaces/IHttpClient";
 
 export class HttpClient implements IHttpClient {
     private axiosInstance: AxiosInstance;
@@ -18,5 +18,10 @@ export class HttpClient implements IHttpClient {
         // C#側の [HttpPost] 属性が付いたアクションに飛ばすイメージ
         await this.axiosInstance.post("/Test", testModel);
         console.log("送信成功:", testModel);
+    }
+
+    public async formApi(formModel: formModel): Promise<void> {
+        await this.axiosInstance.post("/Form", formModel);
+        console.log("送信成功:", formModel);
     }
 }
