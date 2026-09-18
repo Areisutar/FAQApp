@@ -10,15 +10,15 @@ using src.Data;
 namespace src.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20260407070515_TestMigration")]
-    partial class TestMigration
+    [Migration("20260902055756_InitMigration")]
+    partial class InitMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "9.0.14")
+                .HasAnnotation("ProductVersion", "9.0.19")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             MySqlModelBuilderExtensions.HasCharSet(modelBuilder, "utf8mb4");

@@ -1,6 +1,9 @@
 #!/bin/sh
 set -eu
 
+# ローカル開発を既定とし、明示された環境設定は優先する。
+export DOTNET_ENVIRONMENT="${DOTNET_ENVIRONMENT:-${ASPNETCORE_ENVIRONMENT:-Development}}"
+
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 PROJECT_PATH="$SCRIPT_DIR/../src/src.csproj"
 

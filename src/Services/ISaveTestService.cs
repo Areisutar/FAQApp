@@ -6,7 +6,7 @@ namespace src.Services
 {
     public interface ITestService
     {
-        Task SaveData(TestModel testModel);
+        Task<(bool isSuccess, string ErrorMessage)> SaveData(TestModel testModel);
     }
     public class TestService:ITestService
     {
@@ -19,11 +19,24 @@ namespace src.Services
         }
 
         // あなたが書いた保存処理
-        public async Task SaveData(TestModel testmodel)
+        public async Task<(bool isSuccess, string ErrorMessage)> SaveData(TestModel testmodel)
         {
-            testmodel.Id = 0;
-            _context.TestModel.Add(testmodel);
-            await _context.SaveChangesAsync(); 
+            Console.WriteLine(testmodel.Text);
+            if(String.IsNullOrWhiteSpace(testmodel.Text))
+            {
+                return (false,"ErrorMessage:送信されたテキストが無効なので、文字列を正しく送信してください。");
+            }
+            try
+            {
+                testmodel.Id = 0;
+                _context.TestModel.Add(testmodel);
+                await _context.SaveChangesAsync();
+                return(true, string.Empty);
+            }
+            catch(DbUpdateException)
+            {
+                return (isSuccess:false, ErrorMessage: "データの保存に失敗しました。");
+            }
         }
     }
 }

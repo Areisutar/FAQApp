@@ -10,5 +10,6 @@ public class ApplicationDbContext : DbContext
     {
     }
     public DbSet<TestModel> TestModel { get; set; }
+    public DbSet<FormModel> FormModel { get; set; }
     // public DbSet<YourEntity> YourEntities { get; set; }
 }

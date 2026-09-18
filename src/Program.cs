@@ -33,7 +33,8 @@ if (string.IsNullOrWhiteSpace(connectionString))
 }
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseNpgsql(connectionString));
+    // docker-compose.yml の MySQL 8.4 に対応。バージョン判定のためのDB接続は不要。
+    options.UseMySql(connectionString, new MySqlServerVersion(new Version(8, 4, 0))));
 // 1. サービスの登録
 builder.Services.AddControllersWithViews(); // APIとView両方対応
 
@@ -53,6 +54,7 @@ else
 }
 
 builder.Services.AddScoped<ITestService,TestService>();
+builder.Services.AddScoped<IFormService,FormService>();
 
 var app = builder.Build();
 

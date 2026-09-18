@@ -21,7 +21,14 @@ public class TestController : ControllerBase
     [HttpPost]
     public async Task<ActionResult> TestMethod([FromBody] TestModel testModel)
     {
-        await _testService.SaveData(testModel);
-        return Ok(new { message = "C#からの返信だよ！", time = DateTime.Now });
+        var result = await _testService.SaveData(testModel);
+        if (result.isSuccess)
+        {
+            return Ok(new { message = "保存に成功しました", time = DateTime.Now });
+        }
+        else
+        {
+            return BadRequest(new {message = result.ErrorMessage, time = DateTime.Now});
+        }
     }
 }
