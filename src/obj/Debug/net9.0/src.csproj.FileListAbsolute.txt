@@ -130,8 +130,6 @@
 /workspace/src/bin/Debug/net9.0/Microsoft.Extensions.Logging.Abstractions.dll
 /workspace/src/bin/Debug/net9.0/Microsoft.Extensions.Options.dll
 /workspace/src/bin/Debug/net9.0/Mono.TextTemplating.dll
-/workspace/src/bin/Debug/net9.0/Npgsql.dll
-/workspace/src/bin/Debug/net9.0/Npgsql.EntityFrameworkCore.PostgreSQL.dll
 /workspace/src/bin/Debug/net9.0/System.CodeDom.dll
 /workspace/src/bin/Debug/net9.0/System.Composition.AttributedModel.dll
 /workspace/src/bin/Debug/net9.0/System.Composition.Convention.dll
@@ -208,3 +206,5 @@
 /Users/teraotakuya/src/FAQApp/src/obj/Debug/net9.0/src.pdb
 /workspace/src/obj/Debug/net9.0/src.sourcelink.json
 /workspace/src/bin/Debug/net9.0/appsettings.Production.json
+/workspace/src/bin/Debug/net9.0/MySqlConnector.dll
+/workspace/src/bin/Debug/net9.0/Pomelo.EntityFrameworkCore.MySql.dll

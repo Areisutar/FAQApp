@@ -10,22 +10,23 @@ services:
       # - "8888:8888"
     environment:
       - ASPNETCORE_URLS=http://0.0.0.0:8080
+      - DOTNET_ENVIRONMENT=Development
     working_dir: /workspace/src
     tty: true
 
   faqapp_db:
     container_name: faqapp-db
-    image: postgres:18
+    image: mysql:8.4
     restart: always
     ports: 
-      - "54326:5432"
+      - "33066:3306"
     volumes:
-      - ./postgres/init:/docker-entrypoint-initdb.d
-      - postgres_data:/var/lib/postgresql
+      - mysql_data:/var/lib/mysql
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: app
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: faqapp
+      MYSQL_PASSWORD: faqapp
+      MYSQL_DATABASE: app
 
 volumes:
-  postgres_data:
+  mysql_data:
