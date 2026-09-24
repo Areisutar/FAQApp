@@ -15,6 +15,11 @@ const router = createRouter({
       name: 'form',
       component: FormView,
     },
+    {
+      path: '/chat',
+      name: 'chat',
+      component: () => import('../views/Chat.vue'),
+    },
   ],
 })
 
