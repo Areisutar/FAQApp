@@ -208,3 +208,7 @@
 /workspace/src/bin/Debug/net9.0/appsettings.Production.json
 /workspace/src/bin/Debug/net9.0/MySqlConnector.dll
 /workspace/src/bin/Debug/net9.0/Pomelo.EntityFrameworkCore.MySql.dll
+/workspace/src/bin/Debug/net9.0/Npgsql.dll
+/workspace/src/bin/Debug/net9.0/Npgsql.EntityFrameworkCore.PostgreSQL.dll
+/workspace/src/bin/Debug/net9.0/classlib.dll
+/workspace/src/bin/Debug/net9.0/classlib.pdb

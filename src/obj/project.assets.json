@@ -406,10 +406,14 @@
           "Microsoft.Extensions.Logging": "9.0.20"
         },
         "compile": {
-          "lib/net8.0/Microsoft.EntityFrameworkCore.dll": {}
+          "lib/net8.0/Microsoft.EntityFrameworkCore.dll": {
+            "related": ".xml"
+          }
         },
         "runtime": {
-          "lib/net8.0/Microsoft.EntityFrameworkCore.dll": {}
+          "lib/net8.0/Microsoft.EntityFrameworkCore.dll": {
+            "related": ".xml"
+          }
         },
         "build": {
           "buildTransitive/net8.0/Microsoft.EntityFrameworkCore.props": {}
@@ -418,10 +422,14 @@
       "Microsoft.EntityFrameworkCore.Abstractions/9.0.20": {
         "type": "package",
         "compile": {
-          "lib/net8.0/Microsoft.EntityFrameworkCore.Abstractions.dll": {}
+          "lib/net8.0/Microsoft.EntityFrameworkCore.Abstractions.dll": {
+            "related": ".xml"
+          }
         },
         "runtime": {
-          "lib/net8.0/Microsoft.EntityFrameworkCore.Abstractions.dll": {}
+          "lib/net8.0/Microsoft.EntityFrameworkCore.Abstractions.dll": {
+            "related": ".xml"
+          }
         }
       },
       "Microsoft.EntityFrameworkCore.Analyzers/9.0.20": {
@@ -475,10 +483,14 @@
           "Microsoft.Extensions.Primitives": "9.0.20"
         },
         "compile": {
-          "lib/net9.0/Microsoft.Extensions.Caching.Abstractions.dll": {}
+          "lib/net9.0/Microsoft.Extensions.Caching.Abstractions.dll": {
+            "related": ".xml"
+          }
         },
         "runtime": {
-          "lib/net9.0/Microsoft.Extensions.Caching.Abstractions.dll": {}
+          "lib/net9.0/Microsoft.Extensions.Caching.Abstractions.dll": {
+            "related": ".xml"
+          }
         },
         "build": {
           "buildTransitive/net8.0/_._": {}
@@ -494,10 +506,14 @@
           "Microsoft.Extensions.Primitives": "9.0.20"
         },
         "compile": {
-          "lib/net9.0/Microsoft.Extensions.Caching.Memory.dll": {}
+          "lib/net9.0/Microsoft.Extensions.Caching.Memory.dll": {
+            "related": ".xml"
+          }
         },
         "runtime": {
-          "lib/net9.0/Microsoft.Extensions.Caching.Memory.dll": {}
+          "lib/net9.0/Microsoft.Extensions.Caching.Memory.dll": {
+            "related": ".xml"
+          }
         },
         "build": {
           "buildTransitive/net8.0/_._": {}
@@ -524,10 +540,14 @@
           "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.20"
         },
         "compile": {
-          "lib/net9.0/Microsoft.Extensions.DependencyInjection.dll": {}
+          "lib/net9.0/Microsoft.Extensions.DependencyInjection.dll": {
+            "related": ".xml"
+          }
         },
         "runtime": {
-          "lib/net9.0/Microsoft.Extensions.DependencyInjection.dll": {}
+          "lib/net9.0/Microsoft.Extensions.DependencyInjection.dll": {
+            "related": ".xml"
+          }
         },
         "build": {
           "buildTransitive/net8.0/_._": {}
@@ -536,10 +556,14 @@
       "Microsoft.Extensions.DependencyInjection.Abstractions/9.0.20": {
         "type": "package",
         "compile": {
-          "lib/net9.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {}
+          "lib/net9.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {
+            "related": ".xml"
+          }
         },
         "runtime": {
-          "lib/net9.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {}
+          "lib/net9.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {
+            "related": ".xml"
+          }
         },
         "build": {
           "buildTransitive/net8.0/_._": {}
@@ -609,10 +633,14 @@
           "Microsoft.Extensions.Options": "9.0.20"
         },
         "compile": {
-          "lib/net9.0/Microsoft.Extensions.Logging.dll": {}
+          "lib/net9.0/Microsoft.Extensions.Logging.dll": {
+            "related": ".xml"
+          }
         },
         "runtime": {
-          "lib/net9.0/Microsoft.Extensions.Logging.dll": {}
+          "lib/net9.0/Microsoft.Extensions.Logging.dll": {
+            "related": ".xml"
+          }
         },
         "build": {
           "buildTransitive/net8.0/_._": {}
@@ -624,10 +652,14 @@
           "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.20"
         },
         "compile": {
-          "lib/net9.0/Microsoft.Extensions.Logging.Abstractions.dll": {}
+          "lib/net9.0/Microsoft.Extensions.Logging.Abstractions.dll": {
+            "related": ".xml"
+          }
         },
         "runtime": {
-          "lib/net9.0/Microsoft.Extensions.Logging.Abstractions.dll": {}
+          "lib/net9.0/Microsoft.Extensions.Logging.Abstractions.dll": {
+            "related": ".xml"
+          }
         },
         "build": {
           "buildTransitive/net8.0/Microsoft.Extensions.Logging.Abstractions.targets": {}
@@ -640,10 +672,14 @@
           "Microsoft.Extensions.Primitives": "9.0.20"
         },
         "compile": {
-          "lib/net9.0/Microsoft.Extensions.Options.dll": {}
+          "lib/net9.0/Microsoft.Extensions.Options.dll": {
+            "related": ".xml"
+          }
         },
         "runtime": {
-          "lib/net9.0/Microsoft.Extensions.Options.dll": {}
+          "lib/net9.0/Microsoft.Extensions.Options.dll": {
+            "related": ".xml"
+          }
         },
         "build": {
           "buildTransitive/net8.0/Microsoft.Extensions.Options.targets": {}
@@ -652,10 +688,14 @@
       "Microsoft.Extensions.Primitives/9.0.20": {
         "type": "package",
         "compile": {
-          "lib/net9.0/Microsoft.Extensions.Primitives.dll": {}
+          "lib/net9.0/Microsoft.Extensions.Primitives.dll": {
+            "related": ".xml"
+          }
         },
         "runtime": {
-          "lib/net9.0/Microsoft.Extensions.Primitives.dll": {}
+          "lib/net9.0/Microsoft.Extensions.Primitives.dll": {
+            "related": ".xml"
+          }
         },
         "build": {
           "buildTransitive/net8.0/_._": {}
@@ -700,6 +740,32 @@
         },
         "runtime": {
           "lib/net9.0/MySqlConnector.dll": {}
+        }
+      },
+      "Npgsql/9.0.3": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Logging.Abstractions": "8.0.2"
+        },
+        "compile": {
+          "lib/net8.0/Npgsql.dll": {}
+        },
+        "runtime": {
+          "lib/net8.0/Npgsql.dll": {}
+        }
+      },
+      "Npgsql.EntityFrameworkCore.PostgreSQL/9.0.4": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore": "[9.0.1, 10.0.0)",
+          "Microsoft.EntityFrameworkCore.Relational": "[9.0.1, 10.0.0)",
+          "Npgsql": "9.0.3"
+        },
+        "compile": {
+          "lib/net8.0/Npgsql.EntityFrameworkCore.PostgreSQL.dll": {}
+        },
+        "runtime": {
+          "lib/net8.0/Npgsql.EntityFrameworkCore.PostgreSQL.dll": {}
         }
       },
       "Pomelo.EntityFrameworkCore.MySql/9.0.0": {
@@ -890,6 +956,20 @@
         },
         "build": {
           "buildTransitive/net6.0/_._": {}
+        }
+      },
+      "classlib/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore": "9.0.0",
+          "Npgsql.EntityFrameworkCore.PostgreSQL": "9.0.4"
+        },
+        "compile": {
+          "bin/placeholder/classlib.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/classlib.dll": {}
         }
       }
     }
@@ -2409,6 +2489,38 @@
         "mysqlconnector.nuspec"
       ]
     },
+    "Npgsql/9.0.3": {
+      "sha512": "tPvY61CxOAWxNsKLEBg+oR646X4Bc8UmyQ/tJszL/7mEmIXQnnBhVJZrZEEUv0Bstu0mEsHZD5At3EO8zQRAYw==",
+      "type": "package",
+      "path": "npgsql/9.0.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "lib/net6.0/Npgsql.dll",
+        "lib/net6.0/Npgsql.xml",
+        "lib/net8.0/Npgsql.dll",
+        "lib/net8.0/Npgsql.xml",
+        "npgsql.9.0.3.nupkg.sha512",
+        "npgsql.nuspec",
+        "postgresql.png"
+      ]
+    },
+    "Npgsql.EntityFrameworkCore.PostgreSQL/9.0.4": {
+      "sha512": "mw5vcY2IEc7L+IeGrxpp/J5OSnCcjkjAgJYCm/eD52wpZze8zsSifdqV7zXslSMmfJG2iIUGZyo3KuDtEFKwMQ==",
+      "type": "package",
+      "path": "npgsql.entityframeworkcore.postgresql/9.0.4",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "lib/net8.0/Npgsql.EntityFrameworkCore.PostgreSQL.dll",
+        "lib/net8.0/Npgsql.EntityFrameworkCore.PostgreSQL.xml",
+        "npgsql.entityframeworkcore.postgresql.9.0.4.nupkg.sha512",
+        "npgsql.entityframeworkcore.postgresql.nuspec",
+        "postgresql.png"
+      ]
+    },
     "Pomelo.EntityFrameworkCore.MySql/9.0.0": {
       "sha512": "cl7S4s6CbJno0LjNxrBHNc2xxmCliR5i40ATPZk/eTywVaAbHCbdc9vbGc3QThvwGjHqrDHT8vY9m1VF/47o0g==",
       "type": "package",
@@ -2762,6 +2874,11 @@
         "system.threading.channels.nuspec",
         "useSharedDesignerContext.txt"
       ]
+    },
+    "classlib/1.0.0": {
+      "type": "project",
+      "path": "../classlib/classlib.csproj",
+      "msbuildProject": "../classlib/classlib.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -2771,7 +2888,8 @@
       "Microsoft.AspNetCore.SpaServices.Extensions >= 9.0.*",
       "Microsoft.EntityFrameworkCore >= 9.0.*",
       "Microsoft.EntityFrameworkCore.Design >= 9.0.*",
-      "Pomelo.EntityFrameworkCore.MySql >= 9.0.*"
+      "Pomelo.EntityFrameworkCore.MySql >= 9.0.*",
+      "classlib >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -2798,7 +2916,11 @@
       "frameworks": {
         "net9.0": {
           "targetAlias": "net9.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "/workspace/classlib/classlib.csproj": {
+              "projectPath": "/workspace/classlib/classlib.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
