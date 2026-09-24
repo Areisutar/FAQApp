@@ -8,5 +8,6 @@ export DOTNET_ENVIRONMENT="${DOTNET_ENVIRONMENT:-${ASPNETCORE_ENVIRONMENT:-Devel
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 
 dotnet ef migrations remove \
+  --context ApplicationDbContext \
   --project "$SCRIPT_DIR/../src/src.csproj" \
   --startup-project "$SCRIPT_DIR/../src/src.csproj"

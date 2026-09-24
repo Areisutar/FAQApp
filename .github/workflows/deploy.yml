@@ -50,7 +50,12 @@ jobs:
       - name: Run EF Core migrations
         env:
           ConnectionStrings__DefaultConnection: ${{ secrets.PROD_DB_CONNECTION }}
-        run: dotnet ef database update --project src/src.csproj --startup-project src/src.csproj
+        run: dotnet ef database update --project src/src.csproj --startup-project src/src.csproj --context ApplicationDbContext
+
+      - name: Run Supabase EF Core migrations
+        env:
+          SUPABASE_PROD_DB_CONNECTION: ${{ secrets.SUPABASE_PROD_DB_CONNECTION }}
+        run: sh shell/supabase.ef.update.prod.sh
 
       # 🧠 DIGEST生成（コミットハッシュ）
       - name: Set digest

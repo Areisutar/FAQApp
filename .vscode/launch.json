@@ -13,7 +13,8 @@
             "cwd":"${workspaceFolder}",
             "serverReadyAction":{
                 "action": "openExternally",
-                "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
+                "pattern": "\\bNow listening on:\\s+https?://\\S+",
+                "uriFormat": "http://localhost:5134"
             },
             "env": {
                 "ASPNETCORE_ENVIRONMENT": "Development"

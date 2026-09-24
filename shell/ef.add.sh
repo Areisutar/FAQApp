@@ -13,5 +13,6 @@ fi
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 
 dotnet ef migrations add "$1" \
+  --context ApplicationDbContext \
   --project "$SCRIPT_DIR/../src/src.csproj" \
   --startup-project "$SCRIPT_DIR/../src/src.csproj"
