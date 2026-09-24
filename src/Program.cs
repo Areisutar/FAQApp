@@ -1,4 +1,5 @@
 using System.Text.Json.Serialization;
+using FAQApp.Supabase.Data;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
@@ -35,6 +36,17 @@ if (string.IsNullOrWhiteSpace(connectionString))
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     // docker-compose.yml の MySQL 8.4 に対応。バージョン判定のためのDB接続は不要。
     options.UseMySql(connectionString, new MySqlServerVersion(new Version(8, 4, 0))));
+builder.Services.AddDbContext<SupabaseDbContext>(options =>
+{
+    var supabaseConnectionString = builder.Configuration.GetConnectionString("SupabaseConnection");
+    if (string.IsNullOrWhiteSpace(supabaseConnectionString))
+    {
+        throw new InvalidOperationException("SupabaseConnection is not configured.");
+    }
+
+    options.UseNpgsql(supabaseConnectionString);
+});
+
 // 1. サービスの登録
 builder.Services.AddControllersWithViews(); // APIとView両方対応
 
