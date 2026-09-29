@@ -1,14 +1,20 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import FormView from '../views/FormView.vue'
-import Top from '../views/Top.vue'
+import { authCheckError, authError, currentUser } from '../services/auth'
+import { createAuthGuard } from './authGuard'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
+      path: '/login',
+      name: 'login',
+      component: () => import('../views/Login.vue'),
+    },
+    {
       path: '/',
       name: 'top',
-      component: Top,
+      component: () => import('../views/Login.vue'),
     },
     {
       path: '/form',
@@ -22,5 +28,9 @@ const router = createRouter({
     },
   ],
 })
+
+router.beforeEach(createAuthGuard(currentUser, (error) => {
+  authCheckError.value = error === null ? '' : authError(error)
+}))
 
 export default router

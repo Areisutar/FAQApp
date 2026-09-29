@@ -2,6 +2,26 @@
 import { nextTick, onMounted, onUnmounted, ref } from 'vue'
 import type { RealtimeChannel } from '@supabase/supabase-js'
 import { createChatClient, type ChatMessage } from '../services/supabase'
+import { useRouter } from 'vue-router'
+import { authError, logout } from '../services/auth'
+
+const router = useRouter()
+const signingOut = ref(false)
+const logoutError = ref('')
+
+async function signOut() {
+  if (signingOut.value) return
+  signingOut.value = true
+  logoutError.value = ''
+  try {
+    await logout()
+    await router.replace({ name: 'login' })
+  } catch (error) {
+    logoutError.value = authError(error)
+  } finally {
+    signingOut.value = false
+  }
+}
 
 const messages = ref<ChatMessage[]>([])
 const draft = ref('')
@@ -135,15 +155,17 @@ onUnmounted(() => {
   <main class="chat">
     <header>
       <RouterLink to="/">トップへ</RouterLink>
+      <button type="button" :disabled="signingOut" @click="signOut">{{ signingOut ? 'ログアウト中…' : 'ログアウト' }}</button>
       <h1>チャット</h1>
       <p class="status" :class="{ connected }" role="status">{{ connectionStatus }}</p>
       <p class="description">最新100件のメッセージを表示します。</p>
     </header>
 
     <p v-if="configurationError" class="error" role="alert">{{ configurationError }}</p>
-    <p v-if="realtimeError" class="error" role="alert">
+    <p v-if="logoutError" class="error" role="alert">{{ logoutError }}</p>
+    <!-- <p v-if="realtimeError" class="error" role="alert">
       変更通知を受信できません: {{ realtimeError }}
-    </p>
+    </p> -->
     <div v-if="loadError" class="error" role="alert">
       {{ loadError }}
       <button type="button" :disabled="loading" @click="refreshMessages">再読み込み</button>
