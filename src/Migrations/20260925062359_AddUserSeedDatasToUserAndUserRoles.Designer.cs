@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using src.Data;
 
@@ -11,9 +12,11 @@ using src.Data;
 namespace src.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260925062359_AddUserSeedDatasToUserAndUserRoles")]
+    partial class AddUserSeedDatasToUserAndUserRoles
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -199,10 +202,6 @@ namespace src.Migrations
                     b.Property<DateTimeOffset?>("LockoutEnd")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256)
                         .HasColumnType("varchar(256)");
@@ -250,7 +249,6 @@ namespace src.Migrations
                             Email = "admin@example.com",
                             EmailConfirmed = true,
                             LockoutEnabled = true,
-                            Name = "全体管理者",
                             NormalizedEmail = "ADMIN@EXAMPLE.COM",
                             NormalizedUserName = "ADMIN@EXAMPLE.COM",
                             PasswordHash = "AQAAAAIAAYagAAAAELMa5Q7gWV1bKUHS38wrenU5clMlGZ5ggzBNhtcSdyhcEyPmoQzEWnceLGscaAG2ew==",
@@ -267,7 +265,6 @@ namespace src.Migrations
                             Email = "public@example.com",
                             EmailConfirmed = true,
                             LockoutEnabled = true,
-                            Name = "",
                             NormalizedEmail = "PUBLIC@EXAMPLE.COM",
                             NormalizedUserName = "PUBLIC@EXAMPLE.COM",
                             PasswordHash = "AQAAAAIAAYagAAAAEHC70Ils7gTpKze7jnZKO6K109VyYE4qLZMb18aClPbSW4N1Vlu7bkml93DcT2sx0g==",

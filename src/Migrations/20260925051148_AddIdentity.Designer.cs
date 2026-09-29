@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using src.Data;
 
@@ -11,9 +12,11 @@ using src.Data;
 namespace src.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260925051148_AddIdentity")]
+    partial class AddIdentity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -156,22 +159,6 @@ namespace src.Migrations
                         .HasDatabaseName("RoleNameIndex");
 
                     b.ToTable("AspNetRoles", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "79a68294-7d70-4ed6-b153-66b7e6dcad50",
-                            ConcurrencyStamp = "626edaf5-52c7-4d5a-ae52-67288ac88c22",
-                            Name = "Admin",
-                            NormalizedName = "ADMIN"
-                        },
-                        new
-                        {
-                            Id = "a866201e-95db-46c5-9c48-f61b65ebd43b",
-                            ConcurrencyStamp = "8f98ae83-c50c-4fa4-a2e7-1f3b194522ab",
-                            Name = "Public",
-                            NormalizedName = "PUBLIC"
-                        });
                 });
 
             modelBuilder.Entity("src.Models.ApplicationUser", b =>
@@ -198,10 +185,6 @@ namespace src.Migrations
 
                     b.Property<DateTimeOffset?>("LockoutEnd")
                         .HasColumnType("datetime(6)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("longtext");
 
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256)
@@ -240,42 +223,6 @@ namespace src.Migrations
                         .HasDatabaseName("UserNameIndex");
 
                     b.ToTable("AspNetUsers", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "ad9bb655-720e-477e-b7a5-cb8dc3a7dc2d",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "5aa4c359-7ca1-4575-b573-cf5c2e35d37c",
-                            Email = "admin@example.com",
-                            EmailConfirmed = true,
-                            LockoutEnabled = true,
-                            Name = "全体管理者",
-                            NormalizedEmail = "ADMIN@EXAMPLE.COM",
-                            NormalizedUserName = "ADMIN@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAELMa5Q7gWV1bKUHS38wrenU5clMlGZ5ggzBNhtcSdyhcEyPmoQzEWnceLGscaAG2ew==",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "969821ba-29b6-4767-9d64-552ece616b16",
-                            TwoFactorEnabled = false,
-                            UserName = "admin@example.com"
-                        },
-                        new
-                        {
-                            Id = "6e690231-d710-45a0-bc37-ea51a6e108a9",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "0cbe2fc1-b1dc-4e3d-9d32-14fb5edfdcf6",
-                            Email = "public@example.com",
-                            EmailConfirmed = true,
-                            LockoutEnabled = true,
-                            Name = "",
-                            NormalizedEmail = "PUBLIC@EXAMPLE.COM",
-                            NormalizedUserName = "PUBLIC@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEHC70Ils7gTpKze7jnZKO6K109VyYE4qLZMb18aClPbSW4N1Vlu7bkml93DcT2sx0g==",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "e47200f6-2a89-4821-a949-05e6798513b3",
-                            TwoFactorEnabled = false,
-                            UserName = "public@example.com"
-                        });
                 });
 
             modelBuilder.Entity("src.Models.ApplicationUserRole", b =>
@@ -291,18 +238,6 @@ namespace src.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            UserId = "ad9bb655-720e-477e-b7a5-cb8dc3a7dc2d",
-                            RoleId = "79a68294-7d70-4ed6-b153-66b7e6dcad50"
-                        },
-                        new
-                        {
-                            UserId = "6e690231-d710-45a0-bc37-ea51a6e108a9",
-                            RoleId = "a866201e-95db-46c5-9c48-f61b65ebd43b"
-                        });
                 });
 
             modelBuilder.Entity("src.Models.FormModel", b =>
