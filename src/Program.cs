@@ -49,6 +49,33 @@ builder.Services.AddDbContext<SupabaseDbContext>(options =>
 
 // 1. サービスの登録
 builder.Services.AddControllersWithViews(); // APIとView両方対応
+builder.Services.AddIdentity<ApplicationUser, ApplicationRole>(options =>
+{
+    options.User.RequireUniqueEmail = true;
+    options.Lockout.MaxFailedAccessAttempts = 5;
+    options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
+})
+    .AddEntityFrameworkStores<ApplicationDbContext>()
+    .AddDefaultTokenProviders();
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.Cookie.Name = "FAQApp.Auth";
+    options.Cookie.HttpOnly = true;
+    options.Cookie.SameSite = SameSiteMode.Lax;
+    options.Cookie.SecurePolicy = builder.Environment.IsDevelopment()
+        ? CookieSecurePolicy.SameAsRequest : CookieSecurePolicy.Always;
+    options.Events.OnRedirectToLogin = context =>
+    {
+        context.Response.StatusCode = StatusCodes.Status401Unauthorized;
+        return Task.CompletedTask;
+    };
+    options.Events.OnRedirectToAccessDenied = context =>
+    {
+        context.Response.StatusCode = StatusCodes.Status403Forbidden;
+        return Task.CompletedTask;
+    };
+});
+builder.Services.AddAntiforgery(options => options.HeaderName = "X-CSRF-TOKEN");
 
 if (builder.Environment.IsDevelopment())
 {
@@ -67,6 +94,7 @@ else
 
 builder.Services.AddScoped<ITestService,TestService>();
 builder.Services.AddScoped<IFormService,FormService>();
+builder.Services.AddScoped<IAuthService, AuthService>();
 
 var app = builder.Build();
 
@@ -98,6 +126,7 @@ if (!app.Environment.IsDevelopment())
 app.UseRouting();
 
 // 認証・認可はルーティングの後、エンドポイントの前
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.UseEndpoints(endpoint => { });
